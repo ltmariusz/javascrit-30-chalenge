@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(concert-3387324_1920.jpg);
+}
+.all-key {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+.key {
+  font-size: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* border: solid 5px rgb(141, 141, 0); */
+  border: solid 5px black;
+  border-radius: 12px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.key div {
+  font-size: 11px;
+  font-weight: 900;
+  /* color: rgb(189, 189, 2); */
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px;
+  color: white;
+}
+footer a:link {
+  color: white;
+  font-weight: bold;
+}
