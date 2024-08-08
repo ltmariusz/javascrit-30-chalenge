@@ -3,12 +3,15 @@
   padding: 0;
 }
 body {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-image: url(concert-3387324_1920.jpg);
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .all-key {
   display: flex;

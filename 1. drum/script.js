@@ -1,10 +1,10 @@
-document.addEventListener("keypress", (event) => {
+document.addEventListener("keydown", (event) => {
   //   console.log(event.keya);
 
   switch (event.key) {
     case "a":
       playDrum("./audio/Bamboo.wav");
-      //   document.querySelector(".key-a").style.color = "yellow";
+        document.querySelector(".key-a").style.color = "yellow";
       break;
     case "s":
       playDrum("./audio/Boom-Kick.wav");
