@@ -9,7 +9,7 @@ body {
   align-items: center;
   justify-content: center;
   background-image: url(concert-3387324_1920.jpg);
-  background-position:center;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -22,11 +22,13 @@ body {
 .key {
   font-size: 50px;
   font-family: Arial, Helvetica, sans-serif;
-  /* border: solid 5px rgb(141, 141, 0); */
+  font-weight: bolder;
   border: solid 5px black;
+  background-color: rgba(240, 248, 255, 0.247);
   border-radius: 12px;
-  width: 80px;
-  height: 80px;
+  color: rgb(0, 0, 0);
+  min-width: 80px;
+  min-height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,4 +52,7 @@ footer {
 footer a:link {
   color: white;
   font-weight: bold;
+}
+.active {
+  color: yellow;
 }
