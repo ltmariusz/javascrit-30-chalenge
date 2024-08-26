@@ -1,178 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Flex Panels 💪</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Amatic+SC"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link rel="icon" href="https://fav.farm/🔥" />
-  </head>
-  <body>
-    <style>
-      html {
-        box-sizing: border-box;
-        background: #ffc600;
-        font-family: "helvetica neue";
-        font-size: 20px;
-        font-weight: 200;
-      }
 
-      body {
-        margin: 0;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <title>Flex Panels 💪</title>
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
 
-      *,
-      *:before,
-      *:after {
-        box-sizing: inherit;
-      }
+<body>
+  <style>
+    html {
+      box-sizing: border-box;
+      background: #ffc600;
+      font-family: "helvetica neue";
+      font-size: 20px;
+      font-weight: 200;
+    }
 
-      .panels {
-        min-height: 100vh;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-      }
+    body {
+      margin: 0;
+    }
 
-      .panel {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background: #6b0f9c;
-        box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
-        color: white;
-        text-align: center;
-        align-items: center;
-        /* Safari transitionend event.propertyName === flex */
-        /* Chrome + FF transitionend event.propertyName === flex-grow */
-        transition: font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
-          flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), background 0.2s;
-        font-size: 20px;
-        background-size: cover;
-        background-position: center;
-        flex: 1;
-      }
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
 
-      .panel1 {
-        background-image: url(https://images.unsplash.com/photo-1496337589254-7e19d01cec44?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-      }
-      .panel2 {
-        background-image: url(https://plus.unsplash.com/premium_photo-1675805015838-7f8b70536f0f?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-      }
-      .panel3 {
-        background-image: url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d);
-      }
-      .panel4 {
-        background-image: url(https://images.unsplash.com/photo-1480472684115-4966367dde1d?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-      }
-      .panel5 {
-        background-image: url(https://images.unsplash.com/photo-1566996694954-90b052c413c4?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-      }
+    .panels {
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
 
-      /* Flex Children */
-      .panel > * {
-        margin: 0;
-        width: 100%;
-        transition: transform 0.5s;
-        flex: 1 0 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+    .panel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #6b0f9c;
+      box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
+      color: white;
+      text-align: center;
+      align-items: center;
+      /* Safari transitionend event.propertyName === flex */
+      /* Chrome + FF transitionend event.propertyName === flex-grow */
+      transition: font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+        flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), background 0.2s;
+      font-size: 20px;
+      background-size: cover;
+      background-position: center;
+      flex: 1;
+    }
 
-      .panel > *:first-child {
-        transform: translateY(-100%);
-      }
-      .panel.open-active > *:first-child {
-        transform: translateY(0);
-      }
-      .panel > *:last-child {
-        transform: translateY(100%);
-      }
-      .panel.open-active > *:last-child {
-        transform: translateY(0);
-      }
+    .panel1 {
+      background-image: url(https://images.unsplash.com/photo-1496337589254-7e19d01cec44?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    }
 
-      .panel p {
-        text-transform: uppercase;
-        font-family: "Amatic SC", cursive;
-        text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
-        font-size: 2em;
-        /* font-size: 0em; */
-      }
+    .panel2 {
+      background-image: url(https://plus.unsplash.com/premium_photo-1675805015838-7f8b70536f0f?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    }
 
-      .panel p:nth-child(2) {
-        font-size: 4em;
-      }
+    .panel3 {
+      background-image: url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d);
+    }
 
-      .panel.open {
-        font-size: 40px;
-        flex: 5;
-      }
+    .panel4 {
+      background-image: url(https://images.unsplash.com/photo-1480472684115-4966367dde1d?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    }
 
-      /*  .panel:hover {
+    .panel5 {
+      background-image: url(https://images.unsplash.com/photo-1566996694954-90b052c413c4?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    }
+
+    /* Flex Children */
+    .panel>* {
+      margin: 0;
+      width: 100%;
+      transition: transform 0.5s;
+      flex: 1 0 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .panel>*:first-child {
+      transform: translateY(-100%);
+    }
+
+    .panel.open-active>*:first-child {
+      transform: translateY(0);
+    }
+
+    .panel>*:last-child {
+      transform: translateY(100%);
+    }
+
+    .panel.open-active>*:last-child {
+      transform: translateY(0);
+    }
+
+    .panel p {
+      text-transform: uppercase;
+      font-family: "Amatic SC", cursive;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+      font-size: 2em;
+      /* font-size: 0em; */
+    }
+
+    .panel p:nth-child(2) {
+      font-size: 4em;
+    }
+
+    .panel.open {
+      font-size: 40px;
+      flex: 5;
+    }
+
+    /*  .panel:hover {
         font-size: 2em;
       }
 */
-      @media (min-width: 800px) {
-        .panels {
-          flex-direction: row;
-        }
+    @media (min-width: 800px) {
+      .panels {
+        flex-direction: row;
       }
-    </style>
+    }
+  </style>
 
-    <div class="panels">
-      <div class="panel panel1">
-        <p>Hey</p>
-        <p>Let's</p>
-        <p>Dance</p>
-      </div>
-      <div class="panel panel2">
-        <p>Give</p>
-        <p>Take</p>
-        <p>Receive</p>
-      </div>
-      <div class="panel panel3">
-        <p>Experience</p>
-        <p>It</p>
-        <p>Today</p>
-      </div>
-      <div class="panel panel4">
-        <p>Give</p>
-        <p>All</p>
-        <p>You can</p>
-      </div>
-      <div class="panel panel5">
-        <p>Life</p>
-        <p>In</p>
-        <p>Motion</p>
-      </div>
+  <div class="panels">
+    <div class="panel panel1">
+      <p>Hey</p>
+      <p>Let's</p>
+      <p>Dance</p>
     </div>
+    <div class="panel panel2">
+      <p>Give</p>
+      <p>Take</p>
+      <p>Receive</p>
+    </div>
+    <div class="panel panel3">
+      <p>Experience</p>
+      <p>It</p>
+      <p>Today</p>
+    </div>
+    <div class="panel panel4">
+      <p>Give</p>
+      <p>All</p>
+      <p>You can</p>
+    </div>
+    <div class="panel panel5">
+      <p>Life</p>
+      <p>In</p>
+      <p>Motion</p>
+    </div>
+  </div>
 
-    <script>
-      const panels = document.querySelectorAll(".panel");
+  <script>
+    const panels = document.querySelectorAll(".panel");
 
-      function togglePanel() {
-        this.classList.toggle("open");
+    function togglePanel() {
+      this.classList.toggle("open");
+    }
+    function toggleActive(e) {
+      console.log(e.propertyName);
+      if (e.propertyName.includes("flex")) {
+        this.classList.toggle("open-active");
       }
-      function toggleActive(e) {
-        console.log(e.propertyName);
-        if (e.propertyName.includes("flex")) {
-          this.classList.toggle("open-active");
-        }
-      }
-      panels.forEach((element) => {
-        console.log(element);
-        element.addEventListener("click", togglePanel);
-        // element.addEventListener("mouseout", togglePanel);
-        panels.forEach((panel) =>
-          panel.addEventListener("transitionend", toggleActive)
-        );
-      });
-    </script>
-  </body>
+    }
+    panels.forEach((element) => {
+      console.log(element);
+      element.addEventListener("click", togglePanel);
+      // element.addEventListener("mouseout", togglePanel);
+    });
+    panels.forEach((panel) =>
+      panel.addEventListener("transitionend", toggleActive)
+    );
+  </script>
+</body>
+
 </html>
