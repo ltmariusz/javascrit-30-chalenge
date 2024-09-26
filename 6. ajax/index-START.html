@@ -35,7 +35,26 @@
           data.forEach((element) => {
             cities.push(element);
           })
-        );
+        )
+        .then(console.log(cities));
+
+      function findingCities(writedWords) {
+        console.log(writedWords);
+        return cities.filter((find) => {
+          let found = new RegExp(writedWords, "gi"); //??
+          return find.city.match(found) || find.state.match(found); //?
+        });
+      }
+
+      function searchedCity() {
+        let foundCiti = findingCities(this.value);
+      }
+
+      const searchInput = document.querySelector(".search");
+      const suggestions = document.querySelector(".suggestions");
+
+      searchInput.addEventListener("change", searchedCity);
+      searchInput.addEventListener("keyup", searchedCity);
     </script>
   </body>
 </html>
