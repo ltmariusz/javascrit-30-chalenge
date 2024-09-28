@@ -39,15 +39,43 @@
         .then(console.log(cities));
 
       function findingCities(writedWords) {
-        console.log(writedWords);
+        // console.log(writedWords);
         return cities.filter((find) => {
-          let found = new RegExp(writedWords, "gi"); //??
-          return find.city.match(found) || find.state.match(found); //?
+          let foundRegExp = new RegExp(writedWords, "gi");
+          // console.log(foundRegExp);
+          return find.city.match(foundRegExp) || find.state.match(foundRegExp);
         });
       }
 
       function searchedCity() {
         let foundCiti = findingCities(this.value);
+        console.log("test");
+        console.log(foundCiti);
+
+        const html = foundCiti
+          .map((place) => {
+            const regex = new RegExp(this.value, "gi");
+            const cityName = place.city.replace(
+              regex,
+              `<span class="hh">${this.value}</span>`
+            );
+            const stateName = place.state.replace(
+              regex,
+              `<span class="hh">${this.value}</span>`
+            );
+            console.log(cityName);
+            return `<li>
+            <span class="name">${place.city}, ${place.state}</span> 
+            <span class="population">${place.population}</span> 
+            </li>`;
+          })
+          .join("");
+
+        console.log(html);
+        suggestions.innerHTML = html;
+        // const html = foundCiti.map((place) => {
+        //   console.log(place);
+        // });
       }
 
       const searchInput = document.querySelector(".search");
