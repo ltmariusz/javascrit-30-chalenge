@@ -36,6 +36,19 @@
         }
       });
 
+      function filtrSearching() {
+        console.log(this.value);
+        let regexp = new RegExp(this.value, "gi");
+
+        let newTab = cities.filter((findElement) => {
+          return findElement.city.match(regexp);
+        });
+        console.log(newTab);
+      }
+
+      const inputSearch = document.querySelector(".search");
+      inputSearch.addEventListener("keyup", filtrSearching);
+
       //   cities.forEach((element) => {});
       //   console.log(htmlAfterSearch);
 
