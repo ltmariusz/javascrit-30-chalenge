@@ -27,23 +27,59 @@
             console.log(data);
             data.forEach((element) => {
               cities.push(element);
-              htmlAfterSearch.push(
-                `<li>${element.city} ${element.state} ${element.population}</li>`
-              );
+              updateSearchHTML(element, null);
             });
             sugesstion.innerHTML = htmlAfterSearch.join("");
           });
         }
       });
 
+      function updateSearchHTML(findedPlaceObject, searchedString) {
+        console.log(findedPlaceObject);
+        console.log(searchedString);
+
+        if (searchedString === null) {
+          console.log(true);
+          htmlAfterSearch.push(
+            `<li>${findedPlaceObject.city} ${findedPlaceObject.state} ${findedPlaceObject.population}</li>`
+          );
+        } else {
+          let regExpOfSearcjedString = new RegExp(searchedString, "gi");
+          console.warn(regExpOfSearcjedString);
+          let newCity = findedPlaceObject.city.replace(
+            regExpOfSearcjedString,
+            `<span style="background: yellow; display: inline;">${searchedString}</span>`
+          );
+          let newState = findedPlaceObject.state.replace(
+            regExpOfSearcjedString,
+            `<span style="background: yellow; display: inline;">${searchedString}</span>`
+          );
+          console.warn(newCity);
+          htmlAfterSearch.push(
+            `<li>${newCity} ${newState} ${findedPlaceObject.population}</li>`
+          );
+        }
+      }
+
       function filtrSearching() {
         console.log(this.value);
         let regexp = new RegExp(this.value, "gi");
 
+        //tak wyszukuje się elementy
         let newTab = cities.filter((findElement) => {
-          return findElement.city.match(regexp);
+          return (
+            //funkcą match która działa z RegExp wyszukujemy elementy które pasują w tablicy cities, jeżeli pasują to wszystkie znaleźone elementy poda do zmienneje newTab
+            findElement.city.match(regexp) || findElement.state.match(regexp)
+          );
         });
-        console.log(newTab);
+
+        //resetujemy to co widać i wstawiamy znaleźone elementy
+        htmlAfterSearch = [];
+        newTab.forEach((element) => {
+          updateSearchHTML(element, this.value);
+        });
+
+        sugesstion.innerHTML = htmlAfterSearch.join("");
       }
 
       const inputSearch = document.querySelector(".search");
