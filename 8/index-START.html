@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>HTML5 Canvas</title>
-  <link rel="icon" href="https://fav.farm/🔥" />
-</head>
-<body>
-<canvas id="draw" width="800" height="800"></canvas>
-<script>
-</script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML5 Canvas</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <canvas id="draw" width="800" height="800"></canvas>
+    <script>
+      let canvas = document.querySelector("#draw");
+      let context = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.style.background = "#ff8";
+      context.strokeStyle = "#aabbdd";
+      context.lineJoin = "round";
+      context.lineCap = "round";
 
-<style>
-  html, body {
-    margin: 0;
-  }
-</style>
+      let startDrowing = false;
+      let lastX = 0;
+      let lastY = 0;
 
-</body>
+      function drawing(e) {
+        if (!startDrowing) return;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+        console.log(e);
+
+        context.beginPath();
+        context.moveTo(lastX, lastY);
+        context.lineTo(e.offsetX, e.offsetY);
+        context.stroke();
+      }
+
+      canvas.addEventListener("mousemove", drawing);
+      canvas.addEventListener("mousedown", () => (startDrowing = true));
+      canvas.addEventListener("mouseup", () => (startDrowing = false));
+      canvas.addEventListener("mouseout", () => (startDrowing = false));
+    </script>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+    </style>
+  </body>
 </html>
