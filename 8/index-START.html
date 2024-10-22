@@ -16,20 +16,40 @@
       context.strokeStyle = "#aabbdd";
       context.lineJoin = "round";
       context.lineCap = "round";
+      context.lineWidth = 10;
 
       let startDrowing = false;
       let lastX = 0;
       let lastY = 0;
 
+      let flagOfWidth = false;
+      let color = 0;
       function drawing(e) {
         if (!startDrowing) return;
+
         [lastX, lastY] = [e.offsetX, e.offsetY];
+        console.log(context.lineWidth);
+        console.log(canvas.strokeStyle);
+        context.strokeStyle = `hsl(${color}, 100%, 50%)`;
+        //sprawdzanie wielkości rysowanej kropki
+        //jej zwiększanie i zmniejszanie w odpowiednich momentach
+        if (context.lineWidth <= 100 && flagOfWidth === false) {
+          context.lineWidth = context.lineWidth + 0.1;
+          context.strokeStyle;
+        } else {
+          flagOfWidth = true;
+          context.lineWidth = context.lineWidth - 0.1;
+          context.lineWidth == 10 ? (flagOfWidth = false) : "";
+        }
+
         console.log(e);
 
         context.beginPath();
         context.moveTo(lastX, lastY);
         context.lineTo(e.offsetX, e.offsetY);
+
         context.stroke();
+        color++;
       }
 
       canvas.addEventListener("mousemove", drawing);
