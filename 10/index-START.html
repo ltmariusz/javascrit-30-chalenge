@@ -121,11 +121,30 @@
       function handleCheck(event) {
         console.log(lastClicked);
         if (lastClicked == undefined) {
-          lastClicked = event;
+          lastClicked = this;
         }
-        checkboxes.forEach((checkbox) => {
-          console.log(checkbox);
-        });
+        if(lastClicked != undefined){
+          let firstIndexToCheck
+          let lastIndexToCheck
+          checkboxes.forEach((checkbox, index) => {
+            console.log(checkbox);
+            if(checkbox == this || checkbox == lastClicked){
+              if(firstIndexToCheck == undefined){
+                firstIndexToCheck = index
+              } else if (lastIndexToCheck == undefined){
+                lastIndexToCheck = index
+              }
+              console.log(`wybrany element jest ${index}`)
+            }
+          })
+          for (let i = firstIndexToCheck; i < (lastIndexToCheck-firstIndexToCheck+1); i++) {
+            const element = checkboxes[i];
+            if(isShiftClicked){
+              checkboxes[i].checked = true
+            }
+          }
+          ;
+        }
 
         console.log(event);
       }
